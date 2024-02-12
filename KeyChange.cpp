@@ -3,44 +3,44 @@
 #include <cmath>
 
 /*
-Diffie-Hellman-Anahtar-Dei˛imi
-iki taraf aras˝nda g¸venli bir ˛ekilde anahtar payla˛˝m˝n˝ salar,
+Diffie-Hellman-Anahtar-Deƒüi≈üimi
+iki taraf arasƒ±nda g√ºvenli bir ≈üekilde anahtar payla≈üƒ±mƒ±nƒ± saƒülar,
 
-‹reteÁ (g): [2, p-1] aral˝˝nda bir say˝ seÁilir.
-÷zel say˝lar (a ve b): [2, p-2] aral˝˝nda rastgele seÁilen say˝lar olmal˝d˝r.
+√úrete√ß (g): [2, p-1] aralƒ±ƒüƒ±nda bir sayƒ± se√ßilir.
+√ñzel sayƒ±lar (a ve b): [2, p-2] aralƒ±ƒüƒ±nda rastgele se√ßilen sayƒ±lar olmalƒ±dƒ±r.
 
- - Alice ve Bob, birlikte kullanacaklar˝ bir asal say˝ (p) ve bir ¸reteÁ (g) seÁerler.
- - Alice, gizli anahtar˝n˝ (a) seÁer ve Bob, gizli anahtar˝n˝ (b) seÁer.
- - Alice, (g^a mod p) deerini hesaplar ve Bob'a gˆnderir.
- - Bob, (g^b mod p) deerini hesaplar ve Alice'e gˆnderir.
- - Alice, Bob'un gˆnderdii deeri kullanarak ortak anahtar˝ hesaplar: (g^ab mod p).
- - Bob da Alice'in gˆnderdii deeri kullanarak ortak anahtar˝ hesaplar: (g^ba mod p).
- - SonuÁ olarak, Alice ve Bob'un sahip olduu ortak anahtarlar birbirine e˛ittir.
+ - Alice ve Bob, birlikte kullanacaklarƒ± bir asal sayƒ± (p) ve bir √ºrete√ß (g) se√ßerler.
+ - Alice, gizli anahtarƒ±nƒ± (a) se√ßer ve Bob, gizli anahtarƒ±nƒ± (b) se√ßer.
+ - Alice, (g^a mod p) deƒüerini hesaplar ve Bob'a g√∂nderir.
+ - Bob, (g^b mod p) deƒüerini hesaplar ve Alice'e g√∂nderir.
+ - Alice, Bob'un g√∂nderdiƒüi deƒüeri kullanarak ortak anahtarƒ± hesaplar: (g^ab mod p).
+ - Bob da Alice'in g√∂nderdiƒüi deƒüeri kullanarak ortak anahtarƒ± hesaplar: (g^ba mod p).
+ - Sonu√ß olarak, Alice ve Bob'un sahip olduƒüu ortak anahtarlar birbirine e≈üittir.
 */
 
 class KeyChanging {
 	
 	/*
-	S˝n˝f Ad˝: KeyChanging
-	AÁ˝klama:
-	  Bu s˝n˝f Diffie-Hellman Anahtar Dei˛tirme algoritmas˝ iÁin gerekli yap˝y˝ olu˛turur.
+	Sƒ±nƒ±f Adƒ±: KeyChanging
+	A√ßƒ±klama:
+	  Bu sƒ±nƒ±f Diffie-Hellman Anahtar Deƒüi≈ütirme algoritmasƒ± i√ßin gerekli yapƒ±yƒ± olu≈üturur.
 	Parametreler:
-	 - PUBLIC_PRIME_NUMBER: AÁ˝k olarak belirlenecek asal say˝ (p)
-	 - SECRET_PRIVATE_NUMBER: [2, p-1] aral˝˝nda ki˛iye ˆzel seÁilir.
-	 - PUBLIC_GENERATOR_NUMBER: [2, p-2] aral˝˝nda public belirlenir.
-	Dˆn¸˛ Deeri:
-	  None, T¸r¸ KeyChanging Olan bir nesne olu˛turur.
+	 - PUBLIC_PRIME_NUMBER: A√ßƒ±k olarak belirlenecek asal sayƒ± (p)
+	 - SECRET_PRIVATE_NUMBER: [2, p-1] aralƒ±ƒüƒ±nda ki≈üiye √∂zel se√ßilir.
+	 - PUBLIC_GENERATOR_NUMBER: [2, p-2] aralƒ±ƒüƒ±nda public belirlenir.
+	D√∂n√º≈ü Deƒüeri:
+	  None, T√ºr√º KeyChanging Olan bir nesne olu≈üturur.
 	*/
 
 private:
-	long long     PUBLIC_PRIME_NUMBER{};
-	long long   SECRET_PRIVATE_NUMBER{};
-	long long PUBLIC_GENERATOR_NUMBER{};
+	long long int     PUBLIC_PRIME_NUMBER{};
+	long long int   SECRET_PRIVATE_NUMBER{};
+	long long int PUBLIC_GENERATOR_NUMBER{};
 	
 public:
 
-	KeyChanging(const char* NAME, long long public_prime_number,
-		long long public_generator_number, long long secret_private_number) {
+	KeyChanging(const char* NAME, long long int public_prime_number,
+		long long int public_generator_number, long long int secret_private_number) {
 
 		setPublicPrimeNumber(public_prime_number);
 		setPublicGeneratorNumber(public_generator_number);
@@ -48,22 +48,22 @@ public:
 		nonPrivatePublicArgs(NAME);
 	}
 
-	void setPublicPrimeNumber(long long public_prime_number) {
+	void setPublicPrimeNumber(long long int public_prime_number) {
 		PUBLIC_PRIME_NUMBER = public_prime_number;
 	}
-	void setPublicGeneratorNumber(long long public_generator_number) {
+	void setPublicGeneratorNumber(long long int public_generator_number) {
 		PUBLIC_GENERATOR_NUMBER = public_generator_number;
 	}
-	void setSecretPrivateNumber(long long secret_private_number) {
+	void setSecretPrivateNumber(long long int secret_private_number) {
 		SECRET_PRIVATE_NUMBER = secret_private_number;
 	}
-	long long getPublicPrimeNumber() {
+	long long int getPublicPrimeNumber() {
 		return PUBLIC_PRIME_NUMBER;
 	}
-	long long getPublicGeneratorNumber() {
+	long long int getPublicGeneratorNumber() {
 		return PUBLIC_GENERATOR_NUMBER;
 	}
-	long long getSecretPrivateNumber() {
+	long long int getSecretPrivateNumber() {
 		return SECRET_PRIVATE_NUMBER;
 	}
 
@@ -75,52 +75,56 @@ public:
 
 };
 
-long long SquareAndMultiply(long long base, long long exponent, long long modulus) {
+long long int SquareAndMultiply(long long int base, long long int exponent, long long int modulus) {
 
 	/*
-   Fonksiyon Ad˝: SquareAndMultiply
-   AÁ˝klama:
-	 Bu fonksiyon, bir say˝n˝n dier bir say˝ya ¸ss¸ al˝nd˝ktan sonra belirli bir mod¸l ile bˆl¸nmesini salar.
-	 Bu, b¸y¸k say˝larla Áal˝˛˝rken kayan nokta hassasiyeti sorunlar˝n˝ ˆnlemek ve h˝zl˝ bir ˛ekilde sonuÁ ¸retmek iÁin kullan˝l˝r.
+   Fonksiyon Adƒ±: SquareAndMultiply
+   A√ßƒ±klama:
+	 Bu fonksiyon, bir sayƒ±nƒ±n diƒüer bir sayƒ±ya √ºss√º alƒ±ndƒ±ktan sonra belirli bir mod√ºl ile b√∂l√ºnmesini saƒülar.
+	 Bu, b√ºy√ºk sayƒ±larla √ßalƒ±≈üƒ±rken kayan nokta hassasiyeti sorunlarƒ±nƒ± √∂nlemek ve hƒ±zlƒ± bir ≈üekilde sonu√ß √ºretmek i√ßin kullanƒ±lƒ±r.
    Parametreler:
-	 - base: ‹s al˝nacak olan say˝
-	 - exponent: ‹s
-	 - modulus: Mod¸l deeri
-   Dˆn¸˛ Deeri:
-	 ‹s al˝nm˝˛ ve mod¸l ile bˆl¸nm¸˛ sonuÁ
+	 - base: √ús alƒ±nacak olan sayƒ±
+	 - exponent: √ús
+	 - modulus: Mod√ºl deƒüeri
+   D√∂n√º≈ü Deƒüeri:
+	 √ús alƒ±nmƒ±≈ü ve mod√ºl ile b√∂l√ºnm√º≈ü sonu√ß
    Notlar:
-	 Bu fonksiyon, b¸y¸k say˝larla Áal˝˛˝rken kayan nokta hassasiyeti sorunlar˝n˝ ˆnlemek iÁin
-	 kayan nokta aritmetii yerine tam say˝larla Áal˝˛˝r. ‹s alma i˛leminin her ad˝m˝nda mod¸ler aritmetii kullan˝r.
-	 Fonksiyon, h˝zl˝ bir ¸s alma algoritmas˝ olan "square and multiply" tekniini uygular.
+	 Bu fonksiyon, b√ºy√ºk sayƒ±larla √ßalƒ±≈üƒ±rken kayan nokta hassasiyeti sorunlarƒ±nƒ± √∂nlemek i√ßin
+	 kayan nokta aritmetiƒüi yerine tam sayƒ±larla √ßalƒ±≈üƒ±r. √ús alma i≈üleminin her adƒ±mƒ±nda mod√ºler aritmetiƒüi kullanƒ±r.
+	 Fonksiyon, hƒ±zlƒ± bir √ºs alma algoritmasƒ± olan "square and multiply" tekniƒüini uygular.
 	*/
 
-	long long result = 1;
-	base %= modulus; // Taban, mod¸l ile bˆl¸nd¸kten sonra mod¸l¸n deeri al˝n˝r.
+	long long int result = 1;
+	base %= modulus; // Taban, mod√ºl ile b√∂l√ºnd√ºkten sonra mod√ºl√ºn deƒüeri alƒ±nƒ±r.
 
 	while (exponent > 0) {
 
-		// Eer ¸s (exponent) tek ise.
+		// Eƒüer √ºs (exponent) tek ise.
 		if (exponent & 1) result = (result * base) % modulus;
 
 		base = (base * base) % modulus;
-		exponent >>= 1; // ‹s, saa bir kayd˝rma i˛lemi (bˆlme i˛lemi).
+		exponent >>= 1; // √ús, saƒüa bir kaydƒ±rma i≈ülemi (b√∂lme i≈ülemi).
 	}
 
 	return result;
 }
 
 void decryptTheKey(KeyChanging Alice, KeyChanging Bob) {
-	// Alice iÁin hesaplamalar.
-	long long ALICE_POW = SquareAndMultiply(Alice.getPublicGeneratorNumber(), Alice.getSecretPrivateNumber(), Alice.getPublicPrimeNumber());
+	// Alice i√ßin hesaplamalar.
+	long long int ALICE_POW = SquareAndMultiply(Alice.getPublicGeneratorNumber(),
+		Alice.getSecretPrivateNumber(), Alice.getPublicPrimeNumber());
 
-	// Bob iÁin hesaplamalar.
-	long long BOB_POW = SquareAndMultiply(Bob.getPublicGeneratorNumber(), Bob.getSecretPrivateNumber(), Bob.getPublicPrimeNumber());
+	// Bob i√ßin hesaplamalar.
+	long long int BOB_POW = SquareAndMultiply(Bob.getPublicGeneratorNumber(),
+		Bob.getSecretPrivateNumber(), Bob.getPublicPrimeNumber());
 
-	// Alice iÁin hesaplamalar.
-	long long PROTECTED_ALICE_RESULT = SquareAndMultiply(BOB_POW, Alice.getSecretPrivateNumber(), Alice.getPublicPrimeNumber());
+	// Alice i√ßin hesaplamalar.
+	long long int PROTECTED_ALICE_RESULT = SquareAndMultiply(BOB_POW,
+		Alice.getSecretPrivateNumber(), Alice.getPublicPrimeNumber());
 
-	// Bob iÁin hesaplamalar.
-	long long PROTECTED_BOB_RESULT = SquareAndMultiply(ALICE_POW, Bob.getSecretPrivateNumber(), Bob.getPublicPrimeNumber());
+	// Bob i√ßin hesaplamalar.
+	long long int PROTECTED_BOB_RESULT = SquareAndMultiply(ALICE_POW,
+		Bob.getSecretPrivateNumber(), Bob.getPublicPrimeNumber());
 
 	std::cout << std::endl << "Alice Result: " << PROTECTED_ALICE_RESULT << std::endl;
 	std::cout << "Bob Result: " << PROTECTED_BOB_RESULT << std::endl;
@@ -130,11 +134,11 @@ void decryptTheKey(KeyChanging Alice, KeyChanging Bob) {
 
 int main() {
 
-	long long PUBLIC_PRIME{};
-	long long PUBLIC_GENERATOR{};
+	long long int PUBLIC_PRIME{};
+	long long int PUBLIC_GENERATOR{};
 
-	long long PRIVATE_ALICE{};
-	long long PRIVATE_BOB{};
+	long long int PRIVATE_ALICE{};
+	long long int PRIVATE_BOB{};
 
 	std::cout <<
 		"Diffie-Hellman-Key-Change\n"									       <<
@@ -144,7 +148,7 @@ int main() {
 		"Generator(g) : [2, p - 1] a number is selected in the range.\n"	   <<
 		"Private(a ve b) : [2, p - 2] randomly selected numbers in the interval." << std::endl;
 
-	// TRY-EXCEPT BLOKLARI ES GE«›LD›.
+	// TRY-EXCEPT BLOKLARI ES GE√áƒ∞LDƒ∞.
 	std::cout << "\nPUBLIC PRIME: ";
 	std::cin >> PUBLIC_PRIME;
 	std::cout << "PUBLIC GENERATOR: ";
